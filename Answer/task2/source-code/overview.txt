@@ -1,0 +1,33 @@
+This is a C++ program.
+main.cxx is the program entry point. It was created by inspecting maxeler.png visually so fine-tuning should be possible.
+MaxelerSvgGenerator.h declares the MaxelerSvgGenerator class.
+MaxelerSvgGenerator.cxx defines the MaxelerSvgGenerator class. It's where the first half of most of the code is.
+CMakeLists.txt is the cMake build system entry point.
+Shape.h declares the Shape class.
+Shape.cxx defines the Shape class. It's where the second half of most of the code is.
+
+The other source files (Vertex.h, Vertex.cxx, LeftDownShape.h, LeftDownShape.cxx, LeftUpShape.h, LeftUpShape.cxx, RightDownShape.h, RightDownShape.cxx, RightUpShape.h, RightUpShape.cxx, UpLeftShape.h, UpLeftShape.cxx, UpLeftShape.h and UpLeftShape.cxx) are mostly there to avoid code duplication.
+
+Build on Windows using cMake to create a Visual Studio project then use Visual Studio Express to build the C++ code.
+
+Build on Linux using cMake. You will need to change the call to fopen_s in MaxelerSvgGenerator.cxx first, though.
+
+The program only writes to the standard output if something goes wrong.
+
+The task2.bin commands are written directly to a result.txt file that should be created in the current folder.
+
+The author's understanding of the task2.bin commands is as follows:
+- task2.bin basically maintains a current SVG "cursor" indicating where the next move or draw will start from.
+- commands to move the cursor without drawing need to begin with 'P' and end with 'P'
+- otherwise, the cursor draws as it moves
+- Commands are processed left to right and end with 'X' (although that 'X' doesn't really seem to be necessary)
+- R moves the cursor 10 pixels to the right
+- L moves the cursor 10 pixels to the left
+- U moves the cursor 10 pixels toward the bottom of the image
+- D moves the cursor 10 pixels toward the top of the image
+- E moves the cursor diagonally 10 pixels to the right and 10 pixels toward the top of the image
+- A moves the cursor diagonally 10 pixels to the right and 10 pixels toward the bottom of the image
+- C moves the cursor diagonally 10 pixels to the left and 10 pixels toward the bottom of the image
+- E moves the cursor diagonally 10 pixels to the left and 10 pixels toward the top of the image
+- 'J' shortens the current distance the cursor moves horizontally ("step", default is 10 pixels) by 1 pixel. That remains effective until 'K' cancels it.
+- 'M' shortens the current distance the cursor moves vertically ("step", default is 10 pixels) by 1 pixel. That remains effective until 'N' cancels it.

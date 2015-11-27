@@ -1,0 +1,13 @@
+This is a C++ program.
+main.cxx is the program entry point.
+MaxelerSimpleVM.h declares the MaxelerSimpleVM class.
+MaxelerSimpleVM.cxx defines the MaxelerSimpleVM class. It's where most of the code is.
+CMakeLists.txt is the cMake build system entry point.
+
+Build on Windows using cMake to create a Visual Studio project then use Visual Studio Express to build the C++ code.
+
+Build on Linux using cMake. You will need to change the call to fopen_s in MaxelerSimpleVM.cxx first, though.
+
+The program should only interfere with the standard output (without a 'putc' instruction being executed) if something goes wrong.
+
+The main issue with the current virtual machine is probably that it allows the stack to overwrite instuctions, auto-modifying images and data execution. The task specification doesn't seem to indicate whether these would be features or defects. It's easy enough to modify the VM to make it throw an exception in any of those case if required.
